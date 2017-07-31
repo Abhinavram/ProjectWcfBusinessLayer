@@ -16,6 +16,8 @@ namespace ProjectWcfBusinessLayer
         [OperationContract]
         List<Employee> GetAllEmployees();
 
+        [OperationContract]
+        List<Customer> GetAllCustomers();
         
 
         // TODO: Add your service operations here

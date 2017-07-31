@@ -21,9 +21,17 @@
           <Property Name="ename" Type="varchar" MaxLength="20" />
           <Property Name="mgr" Type="int" />
         </EntityType>
+        <EntityType Name="tblSales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>
         <EntityContainer Name="ProjectDBModelStoreContainer">
           <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSales" EntityType="Self.tblSales" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -40,6 +48,7 @@
         <EntityContainer Name="ProjectDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="ProjectDBModel.Employee" />
           <EntitySet Name="Customers" EntityType="ProjectDBModel.Customer" />
+          <EntitySet Name="Sales" EntityType="ProjectDBModel.Sale" />
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -48,6 +57,13 @@
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="CustorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -70,6 +86,14 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="CustorName" ColumnName="CustorName" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="ProjectDBModel.Sale">
+              <MappingFragment StoreEntitySet="tblSales">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

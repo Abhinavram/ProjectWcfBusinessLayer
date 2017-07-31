@@ -18,5 +18,10 @@ namespace ProjectWcfBusinessLayer
         {
             return db.Employees.ToList();
         }
+
+        public List<Customer> GetAllCustomers()
+        {
+            return db.Customers.ToList();
+        }
     }
 }

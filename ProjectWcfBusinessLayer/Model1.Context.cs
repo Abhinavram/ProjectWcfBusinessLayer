@@ -27,5 +27,6 @@ namespace ProjectWcfBusinessLayer
     
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Sale> Sales { get; set; }
     }
 }
