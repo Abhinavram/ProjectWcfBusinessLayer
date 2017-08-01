@@ -24,6 +24,9 @@ namespace ProjectWcfBusinessLayer
 
         [OperationContract]
         int AddCustomer(int CustomerId, string CustorName, string Address);
+
+        [OperationContract]
+        int UpdateCustomer(int CustomerId, string CustorName, string Address);
     }
 
         [DataContract]

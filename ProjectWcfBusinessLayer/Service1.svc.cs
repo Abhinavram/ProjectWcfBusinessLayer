@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Data.Entity;
 
 namespace ProjectWcfBusinessLayer
 {
@@ -54,5 +55,16 @@ namespace ProjectWcfBusinessLayer
             return Retval;
         }
 
+        public int UpdateCustomer(int CustomerId, string CustorName, string Address)
+        {
+            Customer cust = new Customer();
+            cust.CustomerId = CustomerId;
+            cust.CustorName = CustorName;
+            cust.Address = Address;
+            db.Entry(cust).State = EntityState.Modified;
+
+            int Retval = db.SaveChanges();
+            return Retval;
+        }
     }
 }
