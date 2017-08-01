@@ -18,6 +18,9 @@ namespace ProjectWcfBusinessLayer
 
         [OperationContract]
         List<Customer> GetAllCustomers();
+
+        [OperationContract]
+        int DeleteUserById(int CustomerId);
         
 
         // TODO: Add your service operations here

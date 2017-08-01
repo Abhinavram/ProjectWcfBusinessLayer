@@ -21,7 +21,27 @@ namespace ProjectWcfBusinessLayer
 
         public List<Customer> GetAllCustomers()
         {
-            return db.Customers.ToList();
+            List<Customer> customerlist = new List<Customer>();
+            var listuser = from k in db.Customers select k;
+            foreach (var item in listuser)
+            {
+                Customer cust = new Customer();
+                cust.CustomerId = item.CustomerId;
+                cust.CustorName = item.CustorName;
+                cust.Address = item.Address;
+                customerlist.Add(cust);
+            }
+            return customerlist;
         }
+
+        public int DeleteUserById(int CustomerId)
+        {
+            Customer cust = new Customer();
+            cust.CustomerId = CustomerId;
+            db.Entry(cust).State = System.Data.Entity.EntityState.Deleted;
+            int Retval = db.SaveChanges();
+            return Retval;
+        }
+
     }
 }
