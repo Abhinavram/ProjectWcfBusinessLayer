@@ -43,5 +43,16 @@ namespace ProjectWcfBusinessLayer
             return Retval;
         }
 
+        public int AddCustomer(int CustomerId, string CustorName, string Address)
+        {
+            Customer cust = new Customer();
+            cust.CustomerId = CustomerId;
+            cust.CustorName = CustorName;
+            cust.Address = Address;
+            db.Customers.Add(cust);
+            int Retval = db.SaveChanges();
+            return Retval;
+        }
+
     }
 }
