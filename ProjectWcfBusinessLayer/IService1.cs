@@ -21,8 +21,22 @@ namespace ProjectWcfBusinessLayer
 
         [OperationContract]
         int DeleteUserById(int CustomerId);
+
+        [OperationContract]
+        int AddCustomer(int CustomerId, string CustorName, string Address);
+    }
+
+        [DataContract]
+        public class Customers
+        {
+            [DataMember]
+            public int CustomerId { get; set; }
+            [DataMember]
+            public string CustorName { get; set; }
+            [DataMember]
+            public string Address { get; set; }
+        }
         
 
         // TODO: Add your service operations here
-    }
 }
